@@ -22,34 +22,28 @@
 # THE SOFTWARE.
 #
 
-from ..errors import RangeError, RangeException
-from .instrument import Instrument
-from .mock import Mock
-from .resources import list_resources
-from .validators import discreteTruncate
+from pymeasure.instruments import Instrument
 
-from . import advantest
-from . import agilent
-from . import ametek
-from . import ami
-from . import anapico
-from . import anritsu
-from . import attocube
-from . import danfysik
-from . import deltaelektronika
-from . import fluke
-from . import fwbell
-from . import hp
-from . import keithley
-from . import keysight
-from . import lakeshore
-from . import newport
-from . import ni
-from . import oxfordinstruments
-from . import parker
-from . import razorbill
-from . import signalrecovery
-from . import srs
-from . import tektronix
-from . import thorlabs
-from . import yokogawa
+class FLUKE45(Instrument):
+    """ Represents the FLUKE Model 45 DMM.
+    """
+
+    voltage_dc = Instrument.measurement("MEAS:VOLT:DC? DEF,DEF", "DC voltage, in Volts")
+    
+    voltage_ac = Instrument.measurement("MEAS:VOLT:AC? DEF,DEF", "AC voltage, in Volts")
+    
+    current_dc = Instrument.measurement("MEAS:CURR:DC? DEF,DEF", "DC current, in Amps")
+    
+    current_ac = Instrument.measurement("MEAS:CURR:AC? DEF,DEF", "AC current, in Amps")
+    
+    resistance = Instrument.measurement("MEAS:RES? DEF,DEF", "Resistance, in Ohms")
+    
+    resistance_4w = Instrument.measurement("MEAS:FRES? DEF,DEF", "Four-wires (remote sensing) resistance, in Ohms")
+
+    def __init__(self, resourceName, **kwargs):
+        super(FLUKE45, self).__init__(
+            resourceName,
+            "FLUKE45",
+            **kwargs
+        )
+
