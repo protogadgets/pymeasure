@@ -22,4 +22,4 @@
 # THE SOFTWARE.
 #
 
-from .fluke45 import FLUKE45
+from .fluke45 import Fluke45

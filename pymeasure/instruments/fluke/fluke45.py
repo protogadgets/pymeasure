@@ -24,8 +24,8 @@
 
 from pymeasure.instruments import Instrument
 
-class FLUKE45(Instrument):
-    """ Represents the FLUKE Model 45 DMM.
+class Fluke45(Instrument):
+    """ Represents the fluke Model 45 DMM.
     """
 
     voltage_dc = Instrument.measurement("MEAS:VOLT:DC? DEF,DEF", "DC voltage, in Volts")
@@ -41,9 +41,9 @@ class FLUKE45(Instrument):
     resistance_4w = Instrument.measurement("MEAS:FRES? DEF,DEF", "Four-wires (remote sensing) resistance, in Ohms")
 
     def __init__(self, resourceName, **kwargs):
-        super(FLUKE45, self).__init__(
+        super(Fluke45, self).__init__(
             resourceName,
-            "FLUKE45",
+            "Fluke45",
             **kwargs
         )
 
